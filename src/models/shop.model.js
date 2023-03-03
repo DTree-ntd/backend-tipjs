@@ -9,7 +9,6 @@ const COLLECTION_NAME = 'Shops'
 const shopSchema = new Schema({
     name:{
         type:String,
-        unique:true,
         trim:true,
         maxLength: 150
     },
@@ -41,4 +40,4 @@ const shopSchema = new Schema({
 });
 
 //Export the model
-module.exports = model('User', shopSchema);
+module.exports = model(DOCUMENT_NAME, shopSchema);
