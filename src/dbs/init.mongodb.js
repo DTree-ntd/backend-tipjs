@@ -36,4 +36,4 @@ class Database {
 
 const instanceMongodb = Database.getInstance()
 
-module.exports =  instanceMongodb
+module.exports = instanceMongodb
