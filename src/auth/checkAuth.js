@@ -1,6 +1,6 @@
 "use strict"
 
-const { findById } = require("../models/apikey.model")
+const { findById } = require("../services/apikey.service")
 
 const HEADER = {
   API_KEY: 'x-api-key',
@@ -9,7 +9,7 @@ const HEADER = {
 
 const apiKey = async (req, res, next) => {
   try {
-    const key = req.header[HEADER.API_KEY]?.toString()
+    const key = req.headers[HEADER.API_KEY]?.toString()
 
     if(!key) {
       return res.status(403).json({
@@ -35,7 +35,7 @@ const apiKey = async (req, res, next) => {
 
 const permission = (permission) => {
   return (req, res, next) => {
-    if(!req.objKey.permission) {
+    if(!req.objKey.permissions) {
       return res.status(403).json({
         message: 'Permission Denied'
       })
